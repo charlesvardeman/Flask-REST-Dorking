@@ -1,0 +1,14 @@
+# From: https://danielgroves.net/notebook/2014/05/development-environments/
+# Addapted for yum and ceontos
+- name: Install packages
+  become: yes
+  yum: pkg={{ item }} state=installed update_cache=yes
+  with_items:
+      # Python Dev
+      - python-pip
+      - python-setuptools
+      - python-virtualenv
+
+- name: Install virtualenvwrapper
+  pip: name=virtualenvwrapper
+

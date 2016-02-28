@@ -1,0 +1,4 @@
+#ansible/inventories/staging
+[vocabservers]
+104.131.202.76
+

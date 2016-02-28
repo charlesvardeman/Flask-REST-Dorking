@@ -1,0 +1,17 @@
+# http://erikaheidi.com/blog/configuring-a-multistage-environment-with-ansible-and-vagrant
+# Setup for multistage deployment with Vagrant and Ansible.
+---
+- hosts: all
+  become: yes
+  tasks:
+      #    - name: update yum cache
+      #      yum: update_cache=yes
+    - name: upgrade all packages
+      yum: name=* state=latest
+    - name: Make sure git is installed
+      yum: name=git state=present
+      # This only works under centos 7
+    - name: Install EPEL
+      yum: name=epel-release state=present
+  roles:
+    - setup
